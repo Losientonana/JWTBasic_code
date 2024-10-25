@@ -1,0 +1,55 @@
+server:
+  port: 8082
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: OFF
+        type: OFF
+# database 연동 설정
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    각자 PC에 만들어놓은 Database이름을 써야 합니다.
+    url: jdbc:mysql://127.0.0.1:3306/hackerton?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
+    username: losiento
+    password: dl06030909
+  thymeleaf:
+    cache: false
+  # spring data jpa 설정
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+    show-sql: true
+    #    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  springdoc:
+    version: '@project.version@'
+    api-docs:
+      path: /**
+    default-consumes-media-type: application/json
+    default-produces-media-type: application/json
+    swagger-ui:
+      operations-sorter: alpha
+      tags-sorter: alpha
+      path: /swagger-ui.html
+      disable-swagger-default-url: true
+      display-query-params-without-oauth2: true
+      doc-expansion: none
+    paths-to-match:
+      - /**
+
+
+  jwt:
+    secret: tkachsdlfmadmswjdwlscjfwlrdjqdmsvotuselwkdlsj
+
+
+
+#  mqtt:
+#    broker:
+#        host: 2.0.18
+#        port: 1883
